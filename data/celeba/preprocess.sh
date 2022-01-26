@@ -2,14 +2,10 @@
 
 # download data and convert to .json format
 
-if [ ! -d "data/raw/img_align_celeba" ] || [ ! "$(ls -A data/raw/img_align_celeba)" ] || [ ! -f "data/raw/list_attr_celeba.txt" ]; then
-	echo "Please download the celebrity faces dataset and attributes file from http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html"
-	exit 1
-fi
-
-if [ ! -f "data/raw/identity_CelebA.txt" ]; then
-	echo "Please request the celebrity identities file from http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html"
-	exit 1
+if [ ! -d "data/raw/img_align_celeba" ] || [ ! "$(ls -A data/raw/img_align_celeba)" ] || [ ! -f "data/raw/list_attr_celeba.txt" ] || [ ! -f "data/raw/identity_CelebA.txt" ]; then
+	cd preprocess
+    ./get_data.sh
+    cd ..
 fi
 
 if [ ! -d "data/all_data" ] || [ ! "$(ls -A data/all_data)" ]; then
