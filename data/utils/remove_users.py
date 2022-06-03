@@ -32,10 +32,10 @@ dir = os.path.join(parent_path, args.name, 'data')
 subdir = os.path.join(dir, 'sampled_data')
 files = []
 if os.path.exists(subdir):
-    files = os.listdir(subdir)
+    files = sorted(os.listdir(subdir))
 if len(files) == 0:
     subdir = os.path.join(dir, 'all_data')
-    files = os.listdir(subdir)
+    files = sorted(os.listdir(subdir))
 files = [f for f in files if f.endswith('.json')]
 
 for f in files:

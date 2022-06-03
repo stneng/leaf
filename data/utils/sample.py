@@ -54,7 +54,7 @@ print('sampling data')
 parent_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 data_dir = os.path.join(parent_path, args.name, 'data')
 subdir = os.path.join(data_dir, 'all_data')
-files = os.listdir(subdir)
+files = sorted(os.listdir(subdir))
 files = [f for f in files if f.endswith('.json')]
 
 rng_seed = (args.seed if (args.seed is not None and args.seed >= 0) else int(time.time()))

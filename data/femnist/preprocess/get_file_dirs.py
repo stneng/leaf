@@ -24,20 +24,20 @@ write_files = []  # (writer, file directory)
 
 class_dir = os.path.join(parent_path, 'data', 'raw_data', 'by_class')
 rel_class_dir = os.path.join('data', 'raw_data', 'by_class')
-classes = os.listdir(class_dir)
+classes = sorted(os.listdir(class_dir))
 classes = [c for c in classes if len(c) == 2]
 
 for cl in classes:
     cldir = os.path.join(class_dir, cl)
     rel_cldir = os.path.join(rel_class_dir, cl)
-    subcls = os.listdir(cldir)
+    subcls = sorted(os.listdir(cldir))
 
     subcls = [s for s in subcls if (('hsf' in s) and ('mit' not in s))]
 
     for subcl in subcls:
         subcldir = os.path.join(cldir, subcl)
         rel_subcldir = os.path.join(rel_cldir, subcl)
-        images = os.listdir(subcldir)
+        images = sorted(os.listdir(subcldir))
         image_dirs = [os.path.join(rel_subcldir, i) for i in images]
 
         for image_dir in image_dirs:
@@ -45,22 +45,22 @@ for cl in classes:
 
 write_dir = os.path.join(parent_path, 'data', 'raw_data', 'by_write')
 rel_write_dir = os.path.join('data', 'raw_data', 'by_write')
-write_parts = os.listdir(write_dir)
+write_parts = sorted(os.listdir(write_dir))
 
 for write_part in write_parts:
     writers_dir = os.path.join(write_dir, write_part)
     rel_writers_dir = os.path.join(rel_write_dir, write_part)
-    writers = os.listdir(writers_dir)
+    writers = sorted(os.listdir(writers_dir))
 
     for writer in writers:
         writer_dir = os.path.join(writers_dir, writer)
         rel_writer_dir = os.path.join(rel_writers_dir, writer)
-        wtypes = os.listdir(writer_dir)
+        wtypes = sorted(os.listdir(writer_dir))
 
         for wtype in wtypes:
             type_dir = os.path.join(writer_dir, wtype)
             rel_type_dir = os.path.join(rel_writer_dir, wtype)
-            images = os.listdir(type_dir)
+            images = sorted(os.listdir(type_dir))
             image_dirs = [os.path.join(rel_type_dir, i) for i in images]
 
             for image_dir in image_dirs:

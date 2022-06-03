@@ -97,14 +97,14 @@ dir = os.path.join(parent_path, args.name, 'data')
 subdir = os.path.join(dir, 'rem_user_data')
 files = []
 if os.path.exists(subdir):
-    files = os.listdir(subdir)
+    files = sorted(os.listdir(subdir))
 if len(files) == 0:
     subdir = os.path.join(dir, 'sampled_data')
     if os.path.exists(subdir):
-        files = os.listdir(subdir)
+        files = sorted(os.listdir(subdir))
 if len(files) == 0:
     subdir = os.path.join(dir, 'all_data')
-    files = os.listdir(subdir)
+    files = sorted(os.listdir(subdir))
 files = [f for f in files if f.endswith('.json')]
 
 rng_seed = (args.seed if (args.seed is not None and args.seed >= 0) else int(time.time()))

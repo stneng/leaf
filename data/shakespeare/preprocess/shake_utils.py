@@ -36,7 +36,7 @@ def parse_data_in(data_dir, users_and_plays_path, raw=False):
     '''
     with open(users_and_plays_path, 'r') as inf:
         users_and_plays = json.load(inf)
-    files = os.listdir(data_dir)
+    files = sorted(os.listdir(data_dir))
     users = []
     hierarchies = []
     num_samples = []
